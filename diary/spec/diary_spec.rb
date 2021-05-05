@@ -42,9 +42,10 @@ describe Locked do
     end
 
     it 'if user unlocks diary, get_entries should work' do
-      allow(subject).to receive (:locked) { false }
-      subject.add_entry("First Entry")
-      expect(subject.get_entries).to eq(["First Entry"])
+      diary = SecretDiary.new
+      diary.unlock!
+      diary.add_entry("First entry")
+      expect(diary.get_entries).to eq(["First entry"])
     end
     
   end
