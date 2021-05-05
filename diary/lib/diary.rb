@@ -21,19 +21,29 @@ class SecretDiary
   # attr_reader :locked
 
   def initialize
-    # @locked = true
     @diary = []
+    @locked = Locked.new
+    # @locked = true
   end
 
   def add_entry(entry)
-    fail "Diary is locked!" if locked 
+    fail "Diary is locked!" if locked
     @diary << entry
   end
 
   def get_entries
-    fail "Diary is locked!" if locked
+    fail "Diary is locked!" if locked 
     @diary
   end
+
+  def unlock
+    @locked.unlock
+  end
+
+  def locked
+    @locked.locked
+  end
+
 end
 
 
@@ -45,5 +55,11 @@ class Locked
     @locked = true
   end
 
+  def unlock
+    @locked = false
+  end
 
+  def locked
+    @locked = true
+  end
 end
