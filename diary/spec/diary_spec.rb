@@ -31,15 +31,15 @@ describe Locked do
       diary.lock!
       expect{diary.get_entries}.to raise_error "Diary is locked!"
     end
-
+  end
   
 
-  
+  context '.unlock' do
     it 'if user unlocks diary, add_entry should work' do
       diary = SecretDiary.new
       diary.unlock!
       diary.add_entry("First entry")
-      expect(diary.get_entry).to eq(["First entry"])
+      expect(diary.get_entries).to eq(["First entry"])
     end
 
     it 'if user unlocks diary, get_entries should work' do
