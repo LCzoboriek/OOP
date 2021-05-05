@@ -27,21 +27,21 @@ class SecretDiary
   end
 
   def add_entry(entry)
-    fail "Diary is locked!" if locked == true
+    fail "Diary is locked!" if @locked
     @diary << entry
   end
 
   def get_entries
-    fail "Diary is locked!" if locked  == true
+    fail "Diary is locked!" if @locked
     @diary
   end
 
-  def unlock
-    @locked.unlock
+  def unlock!
+    @locked.unlock!
   end
 
-  def locked
-    @locked.locked
+  def lock!
+    @locked.lock!
   end
 
 end
@@ -55,11 +55,11 @@ class Locked
     @locked = true
   end
 
-  def unlock
+  def unlock!
     @locked = false
   end
 
-  def locked
+  def lock!
     @locked = true
   end
 end

@@ -22,13 +22,13 @@ describe Locked do
   context '.locked' do
     it "if diary is locked, you cant add_entry" do
       diary = SecretDiary.new
-      diary.locked
+      diary.lock!
       expect{diary.add_entry("First Entry")}.to raise_error "Diary is locked!" 
     end
 
     it "when diary is locked, you can't get entries" do
       diary = SecretDiary.new
-      diary.locked
+      diary.lock!
       expect{diary.get_entries}.to raise_error "Diary is locked!"
     end
 
@@ -37,7 +37,7 @@ describe Locked do
   context '.unlock' do
     it 'if user unlocks diary, add_entry should work' do
       diary = SecretDiary.new
-      diary.unlock
+      diary.unlock!
       expect(diary.add_entry("First entry")).to eq(["First entry"])
     end
 
