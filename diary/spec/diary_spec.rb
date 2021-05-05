@@ -18,11 +18,12 @@
 
 require 'diary.rb'
 
-describe SecretDiary do
+describe Locked do
   context 'locked_scenarios' do
     it "if diary is locked, you cant add_entry" do
-      allow(subject).to receive (:locked) { true }
-      expect{subject.add_entry("First Entry")}.to raise_error "Diary is locked!" 
+      diary = SecretDiary.new
+      allow(diary).to receive (:locked) { true }
+      expect{diary.add_entry("First Entry")}.to raise_error "Diary is locked!" 
     end
 
     it "when diary is locked, you can't get entries" do

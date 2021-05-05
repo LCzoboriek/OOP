@@ -18,10 +18,10 @@
 
 class SecretDiary
 
-  attr_reader :locked
+  # attr_reader :locked
 
   def initialize
-    @locked = true
+    # @locked = true
     @diary = []
   end
 
@@ -34,4 +34,16 @@ class SecretDiary
     fail "Diary is locked!" if locked
     @diary
   end
+end
+
+
+class Locked
+
+  attr_reader :locked
+
+  def initialize
+    @locked = true
+  end
+
+
 end
