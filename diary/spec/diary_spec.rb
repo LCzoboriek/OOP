@@ -28,7 +28,7 @@ describe Locked do
 
     it "when diary is locked, you can't get entries" do
       diary = SecretDiary.new
-      diary.unlock
+      diary.locked
       expect{diary.get_entries}.to raise_error "Diary is locked!"
     end
 
